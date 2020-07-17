@@ -19,8 +19,8 @@
 </style>
 
 <script>
-    import {categories} from './state/categories'
-    import {events} from './state/events'
+    import { categories } from '../state/categories'
+    import { events } from '../state/events'
 </script>
 
 <ul>

@@ -1,5 +1,4 @@
 <script>
-	
 	import Categories from './Categories'
 	import Events from './Events'
 </script>
