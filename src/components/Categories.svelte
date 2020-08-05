@@ -4,34 +4,40 @@
 </script>
 
 <style>
-  ul {
-    list-style: none;
+  .categories {
     margin: 0;
     padding: 0;
     display: flex;
   }
 
-  li {
-    padding: 5px;
+  .categories > button {
+    border: 0;
+    padding: 10px;
     margin: 6px;
     border-radius: 0.3em;
+    white-space: nowrap;
   }
 
-  li span {
-    padding: 0px;
-    cursor: pointer;
-    font-weight: bold;
+  .categories .new {
+    margin-right: 20px;
+  }
+
+  .categories .new::after {
+    position: relative;
+    right: -25px;
+    content: "";
+    color: green;
+    border-left: 2px solid grey;
   }
 </style>
 
-<ul>
+<div class="categories">
+  <button class="new" on:click={categories.add}>Add Category</button>
   {#each $categories as category}
-    <li style="background-color:{category.color}">
+    <button
+      style="background-color:{category.color}"
+      on:click={() => events.add(category.id)}>
       {category.name}
-      <span on:click={() => events.add(category.id)}>+</span>
-    </li>
+    </button>
   {/each}
-  <li>
-    <button on:click={categories.add}>New Category</button>
-  </li>
-</ul>
+</div>

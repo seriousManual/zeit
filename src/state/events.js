@@ -1,7 +1,7 @@
 import createPersistentStore from '../lib/createPersistentStore'
 
 function createEvents() {
-    const { subscribe, update } = createPersistentStore('events', []);
+    const { subscribe, set, update } = createPersistentStore('events', []);
 
     return {
         subscribe,
@@ -12,7 +12,8 @@ function createEvents() {
                     { start: Date.now(), category }
                 ]
             })
-        }
+        },
+        clear: () => set([]),
     };
 }
 

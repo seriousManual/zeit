@@ -14,26 +14,28 @@ const colors = [
     '#E1C6AC'
 ];
 
+const pauseEvent = { name: 'pause', id: 'pause', color: '#ccc' }
+
 function createCategories() {
-    const { subscribe, update } = createPersistentStore(
-        'categories',
-        [{ name: 'pause', id: 'pause', color: '#ccc' }]
-    );
+    const { subscribe, set, update } = createPersistentStore('categories', [pauseEvent]);
 
     return {
         subscribe,
         add: () => {
             update(events => {
+                const color = colors[events.length - 1] || '#eee';
+
                 return [
                     ...events,
                     {
                         id: Math.floor(Math.random() * 10000),
                         name: nameMaker(),
-                        color: colors[events.length - 1]
+                        color
                     }
                 ];
             })
-        }
+        },
+        clear: () => set([pauseEvent])
     };
 }
 

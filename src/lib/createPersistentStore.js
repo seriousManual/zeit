@@ -13,12 +13,16 @@ function createPersistentStore(key, defaultItems) {
         subscribe,
         update: (updateHandler) => {
             update((items) => {
-                const newItems = updateHandler(items);
+                const newValue = updateHandler(items);
 
-                localStorage.setItem(key, JSON.stringify(newItems));
+                localStorage.setItem(key, JSON.stringify(newValue));
 
-                return newItems;
+                return newValue;
             });
+        },
+        set: (newValue) => {
+            localStorage.setItem(key, JSON.stringify(newValue));
+            set(newValue);
         }
     };
 }
