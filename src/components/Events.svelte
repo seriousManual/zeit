@@ -14,19 +14,26 @@
   $: {
     first = $derivedEvents.first;
     last = $derivedEvents.last;
+    steps = createSteps(first, last);
+  }
+
+  function birb(first, last, category) {
+    return [
+      Math.floor(first / category) * category,
+      Math.floor(last / category) * category + category
+    ];
+  }
+
+  function createSteps(first, last) {
+    let steps = [];
+
+    if (!first || !last) {
+      return steps;
+    }
 
     const duration = last - first;
 
-    if (duration < ms("5s")) {
-      console.log("5s");
-      [first, last] = birb(first, last, ms("5s"));
-    } else if (duration < ms("10s")) {
-      console.log("10s");
-      [first, last] = birb(first, last, ms("10s"));
-    } else if (duration < ms("30s")) {
-      console.log("30s");
-      [first, last] = birb(first, last, ms("30s"));
-    } else if (duration < ms("1m")) {
+    if (duration < ms("1m")) {
       console.log("1m");
       [first, last] = birb(first, last, ms("1m"));
     } else if (duration < ms("2m")) {
@@ -60,20 +67,15 @@
       moment($derivedEvents.last).format("HH:mm:ss"),
       moment(last).format("HH:mm:ss")
     );
-  }
 
-  function birb(first, last, category) {
-    return [
-      Math.floor(first / category) * category,
-      Math.floor(last / category) * category + category
-    ];
+    return steps;
   }
 </script>
 
 <style>
   .steps {
     position: relative;
-    height: 5em;
+    height: 1em;
   }
 
   .step {

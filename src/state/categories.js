@@ -1,7 +1,7 @@
 import Faker from 'faker';
-import { writable, derived } from 'svelte/store';
 
 import onlyOnce from '../lib/onlyOnce'
+import createPersistentStore from '../lib/createPersistentStore'
 
 const nameMaker = onlyOnce(() => Faker.company.bsNoun())
 
@@ -15,9 +15,10 @@ const colors = [
 ];
 
 function createCategories() {
-    const { subscribe, set, update } = writable([
-        { name: 'pause', id: 'pause', color: '#ccc' }
-    ]);
+    const { subscribe, update } = createPersistentStore(
+        'categories',
+        [{ name: 'pause', id: 'pause', color: '#ccc' }]
+    );
 
     return {
         subscribe,
@@ -30,7 +31,7 @@ function createCategories() {
                         name: nameMaker(),
                         color: colors[events.length - 1]
                     }
-                ]
+                ];
             })
         }
     };

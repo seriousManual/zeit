@@ -1,22 +1,19 @@
-import { writable, derived } from 'svelte/store';
+import createPersistentStore from '../lib/createPersistentStore'
 
 function createEvents() {
-	const { subscribe, set, update } = writable([]);
+    const { subscribe, update } = createPersistentStore('events', []);
 
-	return {
-		subscribe,
+    return {
+        subscribe,
         add: (category) => {
             update(events => {
                 return [
                     ...events,
-                    {
-                        start: Date.now(),
-                        category,
-                    }
+                    { start: Date.now(), category }
                 ]
             })
         }
-	};
+    };
 }
 
 export const events = createEvents()
