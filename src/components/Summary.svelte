@@ -1,4 +1,5 @@
 <script>
+  import ms from "ms";
   import moment from "moment";
 
   import { derivedEvents } from "../state/derived";
@@ -6,6 +7,7 @@
 
   let summary = [];
   let overall = 0;
+  let goHomeIn = "";
 
   $: {
     overall = 0;
@@ -29,6 +31,8 @@
     summary = Object.keys(lookup).map(key => {
       return { category: key, duration: formatDuration(lookup[key]) };
     });
+
+    goHomeIn = ms("8h") - overall;
   }
 
   function formatDuration(duration) {
@@ -53,4 +57,5 @@
     <h2>{entry.category}: {entry.duration}</h2>
   {/each}
   <h2>Overall: {formatDuration(overall)}</h2>
+  <h2>Go Home In: {formatDuration(goHomeIn)}</h2>
 </div>
