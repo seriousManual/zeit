@@ -14,8 +14,9 @@
     "svelte": "^3.21.0"
   },
   "dependencies": {
+    "@snowpack/plugin-webpack": "^1.6.0-alpha.0",
     "faker": "^4.1.0",
-    "inpairs": "^1.0.3",
-    "moment": "^2.26.0"
+    "moment": "^2.26.0",
+    "ms": "^2.1.2"
   }
 }

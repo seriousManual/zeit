@@ -1,27 +1,35 @@
-<style>
-    .event {
-        position: absolute;
-        height: 100px;
-    }
-</style>
-
 <script>
-    import moment from 'moment'
-    import { afterUpdate } from 'svelte';
+  import moment from "moment";
+  import { afterUpdate } from "svelte";
 
-    export let event = {};
-    export let first;
-    export let last;
+  import eventPos from "../lib/eventPos";
 
-    const title = `${moment(event.start).format('HH:mm:ss')} - ${moment(event.end).format('HH:mm:ss')}`
-    const color = event.category.color
-    let width;
-    let left;
-    
-    afterUpdate(() => {
-        width = ((event.end - event.start) / (last - first)) * 100
-        left = ((event.start - first) / (last - first)) * 100		
-	});
+  export let event = {};
+  export let first;
+  export let last;
+
+  let left, width, start, end, categoryName, title, color;
+
+  afterUpdate(() => {
+    color = event.category.color;
+    categoryName = categoryName = event.category.name;
+    start = moment(event.start).format("HH:mm:ss");
+    end = moment(event.end).format("HH:mm:ss");
+
+    title = `${categoryName}: ${start} - ${end}`;
+
+    [width, left] = eventPos(event.start, event.end, first, last);
+  });
 </script>
 
-<div class="event" style="background-color:{color};width: {width}%;left: {left}%;" title="{title}"></div>
+<style>
+  .event {
+    position: absolute;
+    height: 100px;
+  }
+</style>
+
+<div
+  class="event"
+  style="background-color:{color};width: {width}%;left: {left}%;"
+  {title} />
