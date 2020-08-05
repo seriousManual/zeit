@@ -5,8 +5,8 @@
   import eventPos from "../lib/eventPos";
 
   export let event = {};
-  export let first;
-  export let last;
+  export let frameBeginning;
+  export let frameEnd;
 
   let left, width, start, end, categoryName, title, color;
 
@@ -18,7 +18,7 @@
 
     title = `${categoryName}: ${start} - ${end}`;
 
-    [width, left] = eventPos(event.start, event.end, first, last);
+    [width, left] = eventPos(event.start, event.end, frameBeginning, frameEnd);
   });
 </script>
 
