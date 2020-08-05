@@ -1,19 +1,21 @@
 <script>
   import { categories } from "../state/categories";
   import { events } from "../state/events";
+  import { derivedEvents } from "../state/derived";
 </script>
 
 <style>
   .categories {
     margin: 0;
     padding: 0;
+    padding-bottom: 1rem;
     display: flex;
   }
 
   .categories > button {
     border: 0;
     padding: 10px;
-    margin: 6px;
+    margin-right: 0.3rem;
     border-radius: 0.3em;
     white-space: nowrap;
   }
@@ -24,7 +26,7 @@
 
   .categories .new::after {
     position: relative;
-    right: -25px;
+    right: -20px;
     content: "";
     color: green;
     border-left: 2px solid grey;

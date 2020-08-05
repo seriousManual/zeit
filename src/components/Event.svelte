@@ -25,7 +25,7 @@
 <style>
   .event {
     position: absolute;
-    height: 100px;
+    height: 1rem;
   }
 </style>
 

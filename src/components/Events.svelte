@@ -66,9 +66,17 @@
 </script>
 
 <style>
+  .events {
+    width: 60%;
+    border: 0.2rem solid #f1e9cb;
+    padding: 1em;
+    border-radius: 0.3rem;
+    height: 3rem;
+  }
+
   .steps {
     position: relative;
-    height: 1em;
+    height: 0.3em;
   }
 
   .step {
@@ -77,6 +85,7 @@
 
   .entries {
     position: relative;
+    top: 1.5rem;
   }
 
   :global(.entries > div:first-of-type) {
@@ -90,7 +99,7 @@
   }
 </style>
 
-<div>
+<div class="events">
   <div class="steps">
     {#each steps as step}
       <div class="step" style="left:{step[0]}%">{step[1]}</div>

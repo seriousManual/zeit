@@ -3,6 +3,7 @@ import Faker from 'faker';
 import onlyOnce from '../lib/onlyOnce'
 import createPersistentStore from '../lib/createPersistentStore'
 
+export const PAUSE_CATEGORY = 'pause';
 const nameMaker = onlyOnce(() => Faker.company.bsNoun())
 
 const colors = [
@@ -14,7 +15,7 @@ const colors = [
     '#E1C6AC'
 ];
 
-const pauseEvent = { name: 'pause', id: 'pause', color: '#ccc' }
+const pauseEvent = { name: 'pause', id: PAUSE_CATEGORY, color: '#ccc' }
 
 function createCategories() {
     const { subscribe, set, update } = createPersistentStore('categories', [pauseEvent]);
