@@ -69,7 +69,7 @@
   .events {
     width: 60%;
     border: 0.2rem solid #f1e9cb;
-    padding: 1em;
+    padding: 0.8rem;
     border-radius: 0.3rem;
     height: 3rem;
   }
@@ -80,7 +80,14 @@
   }
 
   .step {
+    color: grey;
+    font-weight: bold;
+    font-size: 10px;
     position: absolute;
+  }
+
+  .step:last-of-type {
+    transform: translateX(-100%);
   }
 
   .entries {
