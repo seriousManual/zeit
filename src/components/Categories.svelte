@@ -12,12 +12,16 @@
     display: flex;
   }
 
-  .categories > button {
+  .categories > .bier {
     border: 0;
     padding: 10px;
     margin-right: 0.3rem;
     border-radius: 0.3em;
     white-space: nowrap;
+  }
+
+  .categories > .bier > span {
+    cursor: pointer;
   }
 
   .categories .new {
@@ -34,12 +38,14 @@
 </style>
 
 <div class="categories">
-  <button class="new" on:click={categories.add}>Add Category</button>
+  <button class="new bier" on:click={categories.add}>Add Category</button>
   {#each $categories as category}
-    <button
-      style="background-color:{category.color}"
-      on:click={() => events.add(category.id)}>
+    <div class="bier" style="background-color:{category.color}">
       {category.name}
-    </button>
+      {#if category.name != 'pause'}
+        <span on:click={() => console.log('yes')}>ℹ️</span>
+      {/if}
+      <span on:click={() => events.add(category.id)}>⌛</span>
+    </div>
   {/each}
 </div>

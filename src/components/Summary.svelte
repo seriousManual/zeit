@@ -45,7 +45,7 @@
   .summary {
     width: 60%;
     border: 0.2rem solid #f1e9cb;
-    padding: 1em;
+    padding: 0.8em;
     border-radius: 0.3rem;
   }
 </style>
