@@ -1,9 +1,11 @@
-export default function createOnlyOnce(fn) {
+type producer<T> = () => T
+
+function createOnlyOnce<T>(fn: producer<T>) {
     const list = [];
 
-    return function() {
+    return function(): T {
         let i = 0
-        let result
+        let result: T
 
         do {
             result = fn()
@@ -18,3 +20,5 @@ export default function createOnlyOnce(fn) {
         return result;
     }
 }
+
+export default createOnlyOnce
