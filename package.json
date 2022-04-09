@@ -15,7 +15,7 @@
     "@snowpack/plugin-sass": "^1.4.0",
     "@snowpack/plugin-svelte": "^3.6.0",
     "faker": "^4.1.0",
-    "moment": "^2.26.0",
+    "moment": "^2.29.2",
     "ms": "^2.1.2"
   }
 }
