@@ -7,7 +7,7 @@
   "webDependencies": {},
   "devDependencies": {
     "snowpack": "^3.0.13",
-    "svelte": "^3.35.0",
+    "svelte": "^3.49.0",
     "svelte-preprocess": "^4.6.9"
   },
   "dependencies": {
